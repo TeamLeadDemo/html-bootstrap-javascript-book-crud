@@ -72,6 +72,32 @@ The examples above are not very exciting.
 
 Where callbacks really shine are in asynchronous functions, where one function has to wait for another function (like waiting for a file to load).
 
+Synchronous vs Asynchronous
+----------------------------
+image references
+    - https://www.koyeb.com/static/images/blog/sync-vs-async-schema.png
+    - 
+    
+In JavaScript, we can handle asynchronous code using:
+
+	- Callbacks
+	- Promises
+	- Async/Await functions
+
+Real-World Examples
+--------------------
+Synchronous: You want a burger and decide to go to McDonald's. After you order the burger at the counter, you are told to wait as your burger is prepared. In this synchronous situation, you are stuck at the counter until you are served your burger.
+
+Asynchronous: You want a burger and decide to go to Five Guys. You go to the counter and order a burger. Five Guys gives you a buzzer that will notify you once your burger is ready. In this asynchronous situation, you have more freedom while you wait.
+
+Technical Examples
+------------------
+
+Asynchronous Processing
+Batch-processing: is a data-processing method to handle large amounts of data asynchronously. With asynchronous batch-processing, large batches of data are processed at scheduled times to avoid blocking computing resources.
+
+Long-running tasks: such as fulfilling an order placed on an e-commerce site are best handled asynchronously. There is no need to block resources while this task is executed.
+
 Asynchronous Javascript
 -----------------------
 
@@ -82,7 +108,7 @@ When using the JavaScript function setTimeout(), you can specify a callback func
 setTimeout(myFunction, 3000);
 
 function myFunction() {
-  document.getElementById("demo").innerHTML = "I love You !!";
+  document.getElementById("demo").innerHTML = "Hello there!!!";
 }
 
 In the example above, myFunction is used as a callback.
@@ -90,6 +116,7 @@ In the example above, myFunction is used as a callback.
 myFunction is passed to setTimeout() as an argument.
 
 3000 is the number of milliseconds before time-out, so myFunction() will be called after 3 seconds.
+
 
 Javascript Promises
 -------------------
@@ -117,8 +144,131 @@ myPromise.then(
   function(error) { /* code if some error */ }
 );
 
+
+Async/await
+-----------
+
+"async and await make promises easier to write"
+
+async makes a function return a Promise
+
+await makes a function wait for a Promise
+
+Async Syntax
+-------------
+The keyword async before a function makes the function return a promise:
+
+Example
+async function myFunction() {
+  return "Hello";
+}
+
+Is the same as:
+
+function myFunction() {
+  return Promise.resolve("Hello");
+}
+
+Here is how to use the Promise:
+
+myFunction().then(
+  function(value) { /* code if successful */ },
+  function(error) { /* code if some error */ }
+);
+
+Await Syntax
+-------------
+The keyword await before a function makes the function wait for a promise:
+
+let value = await promise;
+The await keyword can only be used inside an async function.
+
+Example
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve, reject) {
+    resolve("Hello there !!");
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();
+
+
+AJAX
+-----
+AJAX is a developer's dream, because you can:
+
+Read data from a web server - after the page has loaded
+Update a web page without reloading the page
+Send data to a web server - in the background
+
+What is AJAX?
+-------------
+AJAX = Asynchronous JavaScript And XML.
+
+AJAX is not a programming language.
+
+AJAX just uses a combination of:
+--------------------------------
+A browser built-in XMLHttpRequest object (to request data from a web server)
+JavaScript and HTML DOM (to display or use the data)
+
+AJAX is a misleading name. AJAX applications might use XML to transport data, but it is equally common to transport data as plain text or JSON text.
+
+AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.
+
+Modern Browsers (Fetch API)
+---------------------------
+Modern Browsers can use Fetch API instead of the XMLHttpRequest Object.
+
+The Fetch API interface allows web browser to make HTTP requests to web servers.
+
+If you use the XMLHttpRequest Object, Fetch can do the same in a simpler way.
+
+XMLHttpRequest
+---------------
+
+The keystone of AJAX is the XMLHttpRequest object.
+
+Create an XMLHttpRequest object
+Define a callback function
+Open the XMLHttpRequest object
+Send a Request to a server
+
+Example
+--------
+// Create an XMLHttpRequest object
+const xhttp = new XMLHttpRequest();
+
+// Define a callback function
+xhttp.onload = function() {
+  // Here you can use the Data
+}
+
+// Send a request
+xhttp.open("GET", "the_url");
+xhttp.send();
+
 Javascript Fetch API
 --------------------
 The Fetch API interface allows web browser to make HTTP requests to web servers.
 
-😀 No need for XMLHttpRequest anymore.
+No need for XMLHttpRequest anymore.
+
+A Fetch API Example
+-------------------
+The example below fetches a file and displays the content:
+
+Example
+fetch(file)
+.then(x => x.text())
+.then(y => myDisplay(y));
+
+Since Fetch is based on async and await, the example above might be easier to understand like this:
+
+Example
+async function getText(file) {
+  let x = await fetch(file);
+  let y = await x.text();
+  myDisplay(y);
+}
