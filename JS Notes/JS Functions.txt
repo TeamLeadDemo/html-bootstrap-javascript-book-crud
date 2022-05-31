@@ -80,7 +80,18 @@ function myCalculator(num1, num2, myCallback) {
   myCallback(sum);
 }
 
-myCalculator(5, 5, myDisplayer);
+myCalculator(5, 5, myDisplayer); // we are invoking myCalculator
+				// the 3rd parameter is a function name, note that we dont use the ()
+				// the 3rd parameter is the function definition of myDisplayer that we are passing as a parameter
+
+
+// could do this as well without callback function
+function myCalculator1(num1, num2) {
+  return num1 + num2;
+}
+
+let sum = myCalculator1(5,5);
+myDisplayer(sum);
 
 The examples above are not very exciting.
 
@@ -90,7 +101,6 @@ Synchronous vs Asynchronous
 ----------------------------
 image references
     - https://www.koyeb.com/static/images/blog/sync-vs-async-schema.png
-    - 
     
 In JavaScript, we can handle asynchronous code using:
 
@@ -119,7 +129,7 @@ Asynchronous programming is a technique that enables your program to start a pot
 
 When using the JavaScript function setTimeout(), you can specify a callback function to be executed on time-out:
 
-setTimeout(myFunction, 3000);
+setTimeout(myFunction, 3000); // setTimeout is an asynchronous call, so once setTimeout has finished execution, make sure to call callback myFunction
 
 function myFunction() {
   document.getElementById("demo").innerHTML = "Hello there!!!";
@@ -131,6 +141,17 @@ myFunction is passed to setTimeout() as an argument.
 
 3000 is the number of milliseconds before time-out, so myFunction() will be called after 3 seconds.
 
+
+fn1 ----> aysnronous function, maybe fetch the data from a file
+fn2 ----> the code here should be executed after the asynchrounous fn1 has executed
+		becuase fn2 needs the response/return data of fn1
+
+
+drawbacks
+---------
+ if we have too many nested asynchronous calls , 
+	it leads to the christmas tree problem
+	difficult to maintain the code
 
 Javascript Promises
 -------------------
@@ -146,7 +167,7 @@ A JavaScript Promise object contains both the producing code and calls to the co
 Example:
 
 let myPromise = new Promise(function(myResolve, myReject) {
-// "Producing Code" (May take some time)
+// "Producing Code" (May take some time) // placing the order for the burger at five guys or read data from a file or make an http call
 
   myResolve(); // when successful
   myReject();  // when error
@@ -154,7 +175,7 @@ let myPromise = new Promise(function(myResolve, myReject) {
 
 // "Consuming Code" (Must wait for a fulfilled Promise)
 myPromise.then(
-  function(value) { /* code if successful */ },
+  function(value) { /* code if successful , like consuming/receiving the burger once it is ready */ },
   function(error) { /* code if some error */ }
 );
 
@@ -195,6 +216,7 @@ Await Syntax
 The keyword await before a function makes the function wait for a promise:
 
 let value = await promise;
+
 The await keyword can only be used inside an async function.
 
 Example
