@@ -14,9 +14,15 @@ function myFunction(a, b) {
   return a * b;
 }
 
-second way - anonymous functions
+let ans = myFunction(4, 3); // invoking the function here
+
+second way - anonymous functions, also know as function expressions
 ----------
+const y = 40;
+
 const x = function (a, b) {return a * b};
+
+let ans = x(4, 3); // invoking
 
 The function above is actually an anonymous function (a function without a name).
 
@@ -26,22 +32,30 @@ third way - arrow functions
 ---------
 
 // ES5
-var x = function(x, y) {
-  return x * y;
+var x = function(a, b) {
+  return a * b;
 }
 
 // ES6
-const x = (x, y) => x * y;
+const x = (a, b) => a * b; // the x variable holds the function definition
 
 Arrow functions allows a short syntax for writing function expressions.
 
 You don't need the function keyword, the return keyword, and the curly brackets.
 
-Arrow functions do not have their own this. They are not well suited for defining object methods.
+Arrow functions do not have their own "this". They are not well suited for defining object methods.
 
 Arrow functions are not hoisted. They must be defined before they are used.
 
 Using const is safer than using var, because a function expression is always constant value.
+var x = (a, b) => a * b;
+console.log(x(5,2)); // prints 10
+x = 10;
+console.log(x(5,2)); // error
+
+const x = (a, b) => a * b; 
+console.log(x(5,2)); // prints 10
+x = 10; // error
 
 You can only omit the return keyword and the curly brackets if the function is a single statement. Because of this, it might be a good habit to always keep them.
 
