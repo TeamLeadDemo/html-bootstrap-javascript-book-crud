@@ -1,0 +1,365 @@
+This document has references from w3schools.com and other websites
+
+Static pages
+
+Dynamic pages
+	- where is the dynamisn brought about?
+		SERVER SIDE(web server) OR CLIENT SIDE(browser)?
+		server side - server side programs like servlets, jsp
+		client side - client side scripts like javascript
+
+What is JavaScript and why do I need it?
+----------------------------------------
+JavaScript is a programming language used primarily by Web browsers to create a dynamic and interactive experience for the user. 
+Most of the functions and applications that make the Internet indispensable to modern life are coded in some form of JavaScript.
+
+The <script> Tag
+-----------------
+In HTML, JavaScript code is inserted between <script> and </script> tags.
+
+<script>
+document.getElementById("demo").innerHTML = "My First JavaScript";
+</script>
+
+JavaScript in <head> or <body>
+------------------------------
+You can place any number of scripts in an HTML document.
+
+Scripts can be placed in the <body>, or in the <head> section of an HTML page, or in both.
+
+Placing scripts at the bottom of the <body> element improves the display speed, because script interpretation slows down the display.
+
+External JavaScript Advantages
+-------------------------------
+Placing scripts in external files has some advantages:
+
+It separates HTML and code
+It makes HTML and JavaScript easier to read and maintain
+Cached JavaScript files can speed up page loads
+To add several script files to one page  - use several script tags:
+
+<script src="myScript1.js"></script>
+<script src="myScript2.js"></script>
+
+External References
+--------------------
+An external script can be referenced in 3 different ways:
+
+With a full URL (a full web address)
+With a file path (like /js/)
+Without any path
+
+Execution
+----------
+
+In HTML, JavaScript programs are executed by the web browser.
+
+On the web, you might see examples without semicolons. 
+Ending statements with semicolon is not required, but highly recommended.
+
+Javascript to display output
+-----------------------------
+JavaScript can "display" data in different ways:
+
+Writing into an HTML element, using innerHTML.
+Writing into the HTML output using document.write().
+Writing into an alert box, using window.alert().
+Writing into the browser console, using console.log().
+
+Javascript Variables
+--------------------
+4 Ways to Declare a JavaScript Variable:
+Using var
+	var x = 10;
+Using let
+	let y = 20;
+Using const
+	const z = 34;
+Using nothing
+	a = 60;
+
+When to Use JavaScript var?
+--------------------------
+Always declare JavaScript variables with var,let, or const.
+
+The var keyword is used in all JavaScript code from 1995 to 2015.
+
+The let and const keywords were added to JavaScript in 2015.
+
+If you want your code to run in older browser, you must use var.
+
+	var x = 20;
+	{
+		var x = 50;
+	}
+	console.log(x); // here x is 50
+
+Use of let
+----------
+
+The let keyword was introduced in ES6 (2015).
+
+Variables defined with let cannot be Redeclared.
+
+Variables defined with let must be Declared before use.
+	console.log(x); // error
+	let x = 50;
+
+Variables defined with let have Block Scope.
+
+	let x = 20;
+	{
+		let x = 50;
+	}
+	console.log(x); // here x is 20
+
+Use of const
+------------
+
+A const variable is similar to let but cannot be reassigned.
+
+	const x = 40;
+	x = 70; // error
+
+JavaScript Types are Dynamic
+----------------------------
+JavaScript has dynamic types. This means that the same variable can be used to hold different data types:
+
+let x;           // Now x is undefined
+x = 5;           // Now x is a Number
+x = "John";      // Now x is a String
+
+const x = 5;
+x = "John"; //error
+
+
+operators
+---------
+
+== (shallow comparison) and === (deep comparison)
+
+let x = 50;
+let y = "50";
+
+console.log(x==y); // true, only checks for the content
+console.log(x===y); // false, checks for both content and type
+
+
+Javascript Datatypes
+---------------------
+
+JavaScript Strings
+------------------
+A string (or a text string) is a series of characters like "John Doe".
+
+Strings are written with quotes. You can use single or double quotes:
+
+Example
+let carName1 = "Volvo XC60";   // Using double quotes
+let carName2 = 'Volvo XC60';   // Using single quotes
+
+You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
+
+Example
+let answer1 = "It's alright";             // Single quote inside double quotes
+let answer2 = "He is called 'Johnny'";    // Single quotes inside double quotes
+let answer3 = 'He is called "Johnny"';    // Double quotes inside single quotes
+
+JavaScript Numbers
+------------------
+JavaScript has only one type of numbers.
+
+Numbers can be written with, or without decimals:
+
+Example
+let x1 = 34.00;     // Written with decimals
+let x2 = 34;        // Written without decimals
+
+JavaScript Booleans
+-------------------
+Booleans can only have two values: true or false.
+
+Example
+let x = 5;
+let y = 5;
+let z = 6;
+(x == y)       // Returns true
+(x == z)       // Returns false
+
+let d = 4;
+console.log(d==true); // true
+non zero is true
+zero is false
+
+JavaScript Arrays
+-----------------
+JavaScript arrays are written with square brackets.
+
+Array items are separated by commas.
+
+The following code declares (creates) an array called cars, containing three items (car names):
+
+Example
+const cars = ["Saab", "Volvo", "BMW"];
+console.log(cars[1]); // prints Volvo
+
+JavaScript Objects
+------------------
+
+we have object literals in JS
+
+JavaScript objects are written with curly braces {}.
+
+Object properties are written as name:value pairs, separated by commas.
+
+Example
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+console.log(person.firstName); // prints John
+
+What is this?
+-------------
+In JavaScript, the this keyword refers to an object.
+
+Which object depends on how this is being invoked (used or called).
+
+The this keyword refers to different objects depending on how it is used:
+
+In an object method, this refers to the object. // similar to java
+Alone, this refers to the global object. // global object is window object
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+
+Do Not Declare Strings, Numbers, and Booleans as Objects!
+----------------------------------------------------------
+When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+
+x = new String();        // Declares x as a String object
+y = new Number();        // Declares y as a Number object
+z = new Boolean();       // Declares z as a Boolean object
+Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
+
+Type coersion
+-------------
+
+Type coercion is similar to type conversion, but the only key difference is the coercion performed automatically or implicitly by the JavaScript engine. For example, In the built-in alert() method when we pass any values the JavaScript engine will automatically convert those values into a string and display the result.
+
+What is the difference between type conversion and type coercion?
+-----------------------------------------------------------------
+Type conversion is similar to type coercion because they both convert values from one data type to another with one key difference — type coercion is implicit whereas type conversion can be either implicit or explicit.
+
+var x = 50;
+x = "hello"; // type coersion, always implicit
+
+Strict mode
+-----------
+JavaScript's strict mode, introduced in ECMAScript 5, is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode".
+
+Strict mode makes several changes to normal JavaScript semantics:
+
+1) Eliminates some JavaScript silent errors by changing them to throw errors.
+2) Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
+3) Prohibits some syntax likely to be defined in future versions of ECMAScript.
+
+Invoking strict mode
+--------------------
+
+Strict mode applies to entire scripts or to individual functions. It doesn't apply to block statements enclosed in {} braces; attempting to apply it to such contexts does nothing. 
+
+Strict mode for scripts
+------------------------
+To invoke strict mode for an entire script, put the exact statement "use strict"; (or 'use strict';) before any other statements.
+
+// Whole-script strict mode syntax
+'use strict';
+var v = "Hi! I'm a strict mode script!";
+
+Strict mode for functions
+-------------------------
+Likewise, to invoke strict mode for a function, put the exact statement "use strict"; (or 'use strict';) in the function's body before any other statements.
+
+function strict() {
+  // Function-level strict mode syntax
+  'use strict';
+  function nested() { return 'And so am I!'; }
+  return "Hi!  I'm a strict mode function!  " + nested();
+}
+function notStrict() { return "I'm not strict."; }
+
+
+examples
+---------
+1) 
+'use strict';
+let mistypeVariable;
+                      
+mistypeVarible = 17;  // Assuming no global variable mistypeVarible exists
+                      // this line throws a ReferenceError due to the
+                      // misspelling of "mistypeVariable" (lack of an "a")	
+
+2) 
+in strict mode duplicate argument names are a syntax error:
+
+function sum(a, a, c) { // !!! syntax error
+  'use strict';
+  return a + a + c; // wrong if this code ran
+}
+	
+
+JSON
+-----
+
+JSON is a format for storing and transporting data.
+
+JSON is often used when data is sent from a server to a web page.
+
+What is JSON?
+JSON stands for JavaScript Object Notation
+JSON is a lightweight data interchange format
+JSON is language independent *
+JSON is "self-describing" and easy to understand
+
+JSON Syntax Rules
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+
+Example:
+
+{"firstName":"John", "lastName":"Doe"}
+
+"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+  {"firstName":"Peter", "lastName":"Jones"}
+]
+
+JSON.parse() 
+	to convert JSON to JS object
+
+JSON.stringify()
+	to convert JS object to JSON
+
+
+
+things we (i) may not be comfortable in javascript
+--------------------------------------------------
+not strongly typed
+	int a = 20; // strongly typed in java
+	var a = 50; // weakly typed in Javascript
+
+dynamic datatypes
+	String a = "hello";
+	a = 40; // not possible in java
+	var a = "hello";
+	a = 40; // possible in javascript
+using a variable before it is declared
+	s = "hello";
+	String s; // not possible in java
+
+	s = "hello";
+	var s; // possible in Javascript, because s is hoisted
+
+
+hoisting in Javascript - interview question

@@ -1,0 +1,124 @@
+Working with Javascript functions
+----------------------------------
+
+Functions have 2 steps
+	- defining the function
+	- invoking the function
+
+functions can be defined in 3 ways
+----------------------------------
+first way - normal functions
+---------
+
+function myFunction(a, b) {
+  return a * b;
+}
+
+second way - anonymous functions
+----------
+const x = function (a, b) {return a * b};
+
+The function above is actually an anonymous function (a function without a name).
+
+Functions stored in variables do not need function names. They are always invoked (called) using the variable name.
+
+third way - arrow functions
+---------
+
+// ES5
+var x = function(x, y) {
+  return x * y;
+}
+
+// ES6
+const x = (x, y) => x * y;
+
+Arrow functions allows a short syntax for writing function expressions.
+
+You don't need the function keyword, the return keyword, and the curly brackets.
+
+Arrow functions do not have their own this. They are not well suited for defining object methods.
+
+Arrow functions are not hoisted. They must be defined before they are used.
+
+Using const is safer than using var, because a function expression is always constant value.
+
+You can only omit the return keyword and the curly brackets if the function is a single statement. Because of this, it might be a good habit to always keep them.
+
+
+Callback functions
+-------------------
+A callback is a function passed as an argument to another function
+
+This technique allows a function to call another function
+
+A callback function can run after another function has finished.
+
+example
+-------
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);
+
+The examples above are not very exciting.
+
+Where callbacks really shine are in asynchronous functions, where one function has to wait for another function (like waiting for a file to load).
+
+Asynchronous Javascript
+-----------------------
+
+Asynchronous programming is a technique that enables your program to start a potentially long-running task, and then rather than having to wait until that task has finished, to be able to continue to be responsive to other events while the task runs.
+
+When using the JavaScript function setTimeout(), you can specify a callback function to be executed on time-out:
+
+setTimeout(myFunction, 3000);
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "I love You !!";
+}
+
+In the example above, myFunction is used as a callback.
+
+myFunction is passed to setTimeout() as an argument.
+
+3000 is the number of milliseconds before time-out, so myFunction() will be called after 3 seconds.
+
+Javascript Promises
+-------------------
+
+"Producing code" is code that can take some time
+
+"Consuming code" is code that must wait for the result
+
+A Promise is a JavaScript object that links producing code and consuming code
+
+A JavaScript Promise object contains both the producing code and calls to the consuming code:
+
+Example:
+
+let myPromise = new Promise(function(myResolve, myReject) {
+// "Producing Code" (May take some time)
+
+  myResolve(); // when successful
+  myReject();  // when error
+});
+
+// "Consuming Code" (Must wait for a fulfilled Promise)
+myPromise.then(
+  function(value) { /* code if successful */ },
+  function(error) { /* code if some error */ }
+);
+
+Javascript Fetch API
+--------------------
+The Fetch API interface allows web browser to make HTTP requests to web servers.
+
+😀 No need for XMLHttpRequest anymore.
